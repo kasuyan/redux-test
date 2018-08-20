@@ -1,0 +1,11 @@
+{
+  "name": "redux-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/kasuyan/redux-test.git",
+  "author": "kasuya_kazunori <kasuya_kazunori@cyberagent.co.jp>",
+  "license": "MIT",
+  "devDependencies": {
+    "create-react-app": "^1.5.2"
+  }
+}
