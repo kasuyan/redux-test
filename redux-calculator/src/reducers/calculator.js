@@ -7,6 +7,7 @@ const initialAppState = {
 };
 
 const caluclator = (state = initialAppState, action) => {
+  console.log("reducers.caluclator", state, action);
   if (action.type === actionTypes.INPUT_NUMBER) {
     return {
       ...state,

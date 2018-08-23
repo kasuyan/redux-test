@@ -1,21 +1,27 @@
-import React, { Component } from "react";
+import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import * as actions from "../actions";
+import { onNumClick, onPlusClick } from "../actions";
 import NumBtn from "../components/NumBtn";
 import PlusBtn from "../components/PlusBtn";
 import Result from "../components/Result";
 
-class CalculatorContainer extends Component {
-  render() {
+interface IProps {
+  calculator: {
+    showingResult: number;
+    resultValue: number;
+    inputValue: number;
+  };
+}
+
+class CalculatorContainer extends React.Component<IProps, {}> {
+  public render() {
     const { calculator, actions } = this.props;
-    console.log("CalculatorContainer.render1", this.props.calculator);
-    console.log("CalculatorContainer.render2", this.props.actions);
     return (
       <div>
         <div>
-          <NumBtn n={1} onClick={() => actions.onNumClick(1)} />
+          <NumBtn n={1} onClick={onNumClick(1)} />
           <NumBtn n={2} onClick={() => actions.onNumClick(2)} />
           <NumBtn n={3} onClick={() => actions.onNumClick(3)} />
         </div>
@@ -47,15 +53,11 @@ class CalculatorContainer extends Component {
   }
 }
 
-const mapState = state => {
-  console.log("mapState", state);
-  return {
-    calculator: state.calculator
-  };
-};
+const mapState = state => ({
+  calculator: state.calculator
+});
 
 function mapDispatch(dispatch) {
-  console.log(actions, dispatch);
   return {
     actions: bindActionCreators(actions, dispatch)
   };
