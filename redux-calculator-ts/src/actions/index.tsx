@@ -1,23 +1,6 @@
-import { Action } from "redux";
+import actionCreatorFactory from "typescript-fsa";
 import * as actionTypes from "../utils/actionTypes";
+const actionCreator = actionCreatorFactory();
 
-interface INum extends Action {
-  type: string;
-  payload: {
-    num: number;
-  };
-}
-export const onNumClick = (num: number): INum => ({
-  payload: {
-    num
-  },
-  type: actionTypes.INPUT_NUMBER
-});
-
-interface IPLUS extends Action {
-  type: string;
-}
-
-export const onPlusClick = (): IPLUS => ({
-  type: actionTypes.PLUS
-});
+export const inputNumer = actionCreator<number>(actionTypes.INPUT_NUMBER);
+export const puls = actionCreator(actionTypes.PLUS);
